@@ -5,7 +5,8 @@ checkout `main` branch
 run 
 ```shell
 pnpm install
-nx run-many -t=gen
+nx run-many -t=push
+
 # or bar-app
 nx serve foo-app
 
