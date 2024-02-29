@@ -5,7 +5,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("FANWAVE_DATABASE_URL")
+  url      = env("BAR_DATABASE_URL")
 }
 
 model BarUser {

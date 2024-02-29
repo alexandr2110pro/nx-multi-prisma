@@ -12,6 +12,14 @@
         "commands": ["prisma generate"]
       }
     },
+    "push": {
+      "executor": "nx:run-commands",
+      "outputs": ["{workspaceRoot}/node_modules/@prisma/client/bar"],
+      "options": {
+        "cwd": "bar/db",
+        "commands": ["prisma db push"]
+      }
+    },
     "lint": {
       "executor": "@nx/eslint:lint"
     },
