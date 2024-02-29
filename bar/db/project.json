@@ -1,0 +1,27 @@
+{
+  "name": "bar-db",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "bar/db/src",
+  "projectType": "library",
+  "targets": {
+    "gen": {
+      "executor": "nx:run-commands",
+      "outputs": ["{workspaceRoot}/node_modules/@prisma/client/bar"],
+      "options": {
+        "cwd": "bar/db",
+        "commands": ["prisma generate"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "bar/db/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}

@@ -14,7 +14,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@nx-multi-prisma/bar/db": ["bar/db/src/index.ts"],
+      "@nx-multi-prisma/foo/db": ["foo/db/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

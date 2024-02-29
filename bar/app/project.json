@@ -1,0 +1,73 @@
+{
+  "name": "bar-app",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "bar/app/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "platform": "node",
+        "outputPath": "dist/bar/app",
+        "format": ["cjs"],
+        "bundle": false,
+        "main": "bar/app/src/main.ts",
+        "tsConfig": "bar/app/tsconfig.app.json",
+        "assets": [
+          "bar/app/src/assets",
+          {
+            "glob": "**/schema.prisma",
+            "input": "./bar",
+            "output": "./bar"
+          }
+        ],
+        "generatePackageJson": true,
+        "esbuildOptions": {
+          "sourcemap": true,
+          "outExtension": {
+            ".js": ".js"
+          }
+        }
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "esbuildOptions": {
+            "sourcemap": false,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "bar-app:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "bar-app:build:development"
+        },
+        "production": {
+          "buildTarget": "bar-app:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "bar/app/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}

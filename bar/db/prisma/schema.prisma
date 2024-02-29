@@ -1,0 +1,14 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../../../node_modules/@prisma/client/bar"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("FANWAVE_DATABASE_URL")
+}
+
+model BarUser {
+  id    String @id @default(uuid())
+  email String @unique
+}

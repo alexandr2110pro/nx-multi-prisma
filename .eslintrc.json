@@ -1,0 +1,166 @@
+{
+  "root": true,
+  "ignorePatterns": ["**/*"],
+  "plugins": ["@nx", "import", "jsonc"],
+  "overrides": [
+    {
+      "files": "*.json",
+      "parser": "jsonc-eslint-parser",
+      "extends": [
+        "plugin:jsonc/recommended-with-json",
+        "plugin:jsonc/prettier"
+      ],
+      "rules": {}
+    },
+    {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "rules": {
+        "semi": ["error", "always"],
+        "no-multiple-empty-lines": [
+          "error",
+          {
+            "max": 1,
+            "maxBOF": 0,
+            "maxEOF": 0
+          }
+        ],
+        "quotes": [
+          "error",
+          "single",
+          {
+            "avoidEscape": true
+          }
+        ],
+        "@nx/enforce-module-boundaries": [
+          "error",
+          {
+            "enforceBuildableLibDependency": true,
+            "allow": [],
+            "depConstraints": [
+              {
+                "sourceTag": "*",
+                "onlyDependOnLibsWithTags": ["*"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "extends": ["plugin:@nx/typescript", "plugin:import/recommended"],
+      "settings": {
+        "import/resolver": {
+          "typescript": {
+            "project": [
+              "tsconfig.json",
+              "**/tsconfig.json",
+              "!tmp/**/tsconfig.json",
+              "!node_modules/**/tsconfig.json",
+              "!dist/**/tsconfig.json",
+              "!local/**/tsconfig.json",
+              "!.nx/**/tsconfig.json"
+            ]
+          },
+          "node": true
+        }
+      },
+      "rules": {
+        "object-curly-spacing": ["error", "always"],
+        "array-bracket-spacing": ["error", "never"],
+        "quotes": [
+          "error",
+          "single",
+          {
+            "avoidEscape": true,
+            "allowTemplateLiterals": false
+          }
+        ],
+        "import/newline-after-import": [
+          "error",
+          {
+            "count": 1
+          }
+        ],
+        "import/no-unresolved": [
+          "error",
+          {
+            "ignore": ["^@app/"]
+          }
+        ],
+        "import/no-default-export": ["warn"],
+        "import/order": [
+          "error",
+          {
+            "newlines-between": "always",
+            "warnOnUnassignedImports": true,
+            "alphabetize": {
+              "order": "asc",
+              "caseInsensitive": true
+            },
+            "groups": [
+              "builtin",
+              "external",
+              "internal",
+              "parent",
+              "index",
+              "sibling"
+            ]
+          }
+        ],
+        "lines-between-class-members": [
+          "error",
+          "always",
+          {
+            "exceptAfterSingleLine": true
+          }
+        ],
+        "max-params": ["error", 4],
+        "@typescript-eslint/no-unused-vars": [
+          "warn",
+          {
+            "argsIgnorePattern": "^_|props",
+            "varsIgnorePattern": "^_"
+          }
+        ],
+        "@typescript-eslint/no-empty-interface": "off",
+        "@typescript-eslint/member-ordering": [
+          "error",
+          {
+            "default": [
+              "static-field",
+              "static-get",
+              "static-set",
+              "private-static-field",
+              "private-static-get",
+              "private-static-set",
+              "static-method",
+              "private-static-method",
+              "instance-field",
+              "instance-get",
+              "private-instance-field",
+              "private-instance-get",
+              "abstract-field",
+              "constructor",
+              "instance-method",
+              "private-instance-method",
+              "abstract-method"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.js", "*.jsx"],
+      "extends": ["plugin:@nx/javascript"],
+      "rules": {}
+    },
+    {
+      "files": ["*.spec.ts", "*.spec.tsx", "*.spec.js", "*.spec.jsx"],
+      "env": {
+        "jest": true
+      },
+      "rules": {}
+    }
+  ]
+}

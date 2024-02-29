@@ -1,0 +1,27 @@
+{
+  "name": "foo-db",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "foo/db/src",
+  "projectType": "library",
+  "targets": {
+    "gen": {
+      "executor": "nx:run-commands",
+      "outputs": ["{workspaceRoot}/node_modules/@prisma/client/foo"],
+      "options": {
+        "cwd": "foo/db",
+        "commands": ["prisma generate"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "foo/db/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}
