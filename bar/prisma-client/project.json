@@ -1,0 +1,19 @@
+{
+  "name": "bar-prisma-client",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "bar/prisma-client/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "bar/prisma-client/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}

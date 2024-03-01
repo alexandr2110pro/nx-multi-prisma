@@ -41,3 +41,5 @@ Thumbs.db
 .nx/cache
 
 docker
+
+**/prisma-client/src/generated

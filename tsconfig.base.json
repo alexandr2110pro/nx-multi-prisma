@@ -16,7 +16,9 @@
     "baseUrl": ".",
     "paths": {
       "@nx-multi-prisma/bar/db": ["bar/db/src/index.ts"],
-      "@nx-multi-prisma/foo/db": ["foo/db/src/index.ts"]
+      "@nx-multi-prisma/bar/prisma-client": ["bar/prisma-client/src/index.ts"],
+      "@nx-multi-prisma/foo/db": ["foo/db/src/index.ts"],
+      "@nx-multi-prisma/foo/prisma-client": ["foo/prisma-client/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
