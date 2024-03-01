@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client-js"
-  output   = "../../../node_modules/@prisma/client/foo"
+  output   = "../../prisma-client/src/generated"
 }
 
 datasource db {
@@ -10,5 +10,5 @@ datasource db {
 
 model FooUser {
   id    String @id @default(uuid())
-  email String @unique
+  email String
 }
